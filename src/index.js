@@ -76,7 +76,7 @@ function clearForm(event) {
 		p.textContent = '';
 	});
 
-	const inputs = document.querySelectorAll('input[type="text"');
+	const inputs = document.querySelectorAll('input[type="text"]');
 	inputs.forEach((input) => {
 		input.value = '';
 	});
