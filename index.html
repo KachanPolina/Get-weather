@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get weather</title>
     <link rel="stylesheet" href="./Assets/Styles/style.css">
+    <script src="./src/index.js" defer></script>
 </head>
 <body>
     <h1>Weather map</h1>
@@ -22,7 +23,7 @@
                 <label for="city-id">City ID</label>
             </div>
             <div class="city-input">
-                <input type="text" name="city-id" id="city-id">
+                <input type="text" name="city-id" id="city-id" disabled>
             </div>
         </div>
         <div class="radio-container">
@@ -38,19 +39,19 @@
         <div class="output-info-container">
             <div>
                 <p>Temperature</p>
-                <p></p>
+                <p id="temperature-paragraph"></p>
             </div>
             <div>
                 <p>Wind speed</p>
-                <p></p>
+                <p id="wind-speed-paragraph"></p>
             </div>
             <div>
                 <p>Humidity</p>
-                <p></p>
+                <p id="humidity-paragraph"></p>
             </div>
         </div>
         <div class="btn-container">
-            <button>Weather</button>
+            <button id="weather-button">Weather</button>
             <button type="reset">Cancel</button>
         </div>
     </form>

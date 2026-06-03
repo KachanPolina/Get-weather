@@ -101,6 +101,7 @@ form > div {
     width: 150px;
     height: 50px;
     border: 2px solid blue;
+    text-align: center;
 }
 
 .btn-container {
@@ -112,6 +113,10 @@ form > div {
 .btn-container > button {
     font-size: 18px;
     height: 30px;
+}
+
+.disable-input {
+    background-color: rgb(186, 178, 178);
 }
 
 
