@@ -2,10 +2,6 @@
     box-sizing: border-box;
 }
 
-/* div {
-    border: 1px solid brown;
-} */
-
 h1 {
     text-align: center;
     font-size: 35px;
@@ -23,7 +19,7 @@ form {
     align-items: center;
 }
 
-form > div {
+form > div, .error-message {
     width: 80%;
     margin: 10px 50px;
 }
@@ -117,6 +113,13 @@ form > div {
 
 .disable-input {
     background-color: rgb(186, 178, 178);
+}
+
+.error-message {
+    border: 2px solid red;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
 }
 
 
