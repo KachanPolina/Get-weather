@@ -1,6 +1,7 @@
 'use strict';
 
 let input = document.querySelector('#city-name');
+let searchpParametry = 'q';
 
 const inputName = document.querySelector('#city-name');
 const inputId = document.querySelector('#city-id');
@@ -14,11 +15,13 @@ function checkRadiobutton() {
 		inputId.disabled = true;
 
 		input = document.querySelector('#city-name');
+		searchpParametry = 'q';
 	} else if (radioId.checked) {
 		inputName.disabled = true;
 		inputId.disabled = false;
 
 		input = document.querySelector('#city-id');
+		searchpParametry = 'id';
 	}
 }
 
@@ -29,22 +32,9 @@ function getWeatherInfo(event) {
 	event.preventDefault();
 
 	const inputValue = input.value;
-	// console.log(Number.parseInt(inputValue))
-	// if (typeof Number.parseInt(inputValue) === 'number') {
-	// 	console.log(`its number`);
-	// } else {
-	//     console.log('string')
-	// }
-
-	const param = {
-		url: 'https://api.openweathermap.org/data/2.5',
-		appid: '75c02277681f2e2438cfe8222088d2fd',
-		cityName: 'Dnipro',
-		cityId: 709930,
-	};
 
 	fetch(
-		`https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&units=metric&appid=${param.appid}`,
+		`https://api.openweathermap.org/data/2.5/weather?${searchpParametry}=${inputValue}&units=metric&appid=75c02277681f2e2438cfe8222088d2fd`,
 	)
 		.then((weatherInfo) => {
 			// console.log(weatherInfo);
@@ -58,16 +48,14 @@ function getWeatherInfo(event) {
 			);
 			temperatureParagraph.textContent = `${city.main.temp} C`;
 
-            const windSpeedParagraph = document.querySelector(
+			const windSpeedParagraph = document.querySelector(
 				'#wind-speed-paragraph',
 			);
 			windSpeedParagraph.textContent = `${city.wind.speed} m/s`;
 
-            const humidityParagraph = document.querySelector(
-				'#humidity-paragraph',
-			);
+			const humidityParagraph = document.querySelector('#humidity-paragraph');
 			humidityParagraph.textContent = city.main.humidity;
-		})
+		});
 	// .catch((error) => {
 	// 	console.log(error);
 	// });
@@ -75,3 +63,13 @@ function getWeatherInfo(event) {
 
 const weatherButton = document.querySelector('#weather-button');
 weatherButton.addEventListener('click', getWeatherInfo);
+
+function clearForm() {
+	const paragraphs = document.querySelectorAll('p[id]');
+	paragraphs.forEach((p) => {
+		p.textContent = '';
+	});
+}
+
+const resetButton = document.querySelector('#reset-button');
+resetButton.addEventListener('click', clearForm);
